@@ -78,10 +78,11 @@ button.addEventListener('click', function() {
     	console.log('> Writable Auxiliaries: ' + characteristic.properties.writableAuxiliaries);
 		
 		myCharacteristic = characteristic;
-    return myCharacteristic.startNotifications().then(_ => {
-      log('> Notifications started');
-      myCharacteristic.addEventListener('characteristicvaluechanged',
-          handleNotifications);
+		return myCharacteristic.startNotifications().then(_ => {
+		log('> Notifications started');
+		myCharacteristic.addEventListener('characteristicvaluechanged',
+         handleNotifications);
+		 });
 	})
 	.catch(exception => {
 		console.log(exception);
