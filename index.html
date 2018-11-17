@@ -103,7 +103,7 @@ function onStopButtonClick() {
   if (myCharacteristic) {
     myCharacteristic.stopNotifications()
     .then(_ => {
-      log('> Notifications stopped');
+      console.log('> Notifications stopped');
       myCharacteristic.removeEventListener('characteristicvaluechanged',
           handleNotifications);
     })
