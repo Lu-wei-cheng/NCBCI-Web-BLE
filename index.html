@@ -42,7 +42,7 @@
   <!-- }); -->
 
 const button = document.querySelector('#the-button');
-const msg = document.querySelector('#msg');
+const msg = document.getElementById('#msg');
 
 button.addEventListener('click', function() {
 	navigator.bluetooth.requestDevice({
@@ -50,7 +50,7 @@ button.addEventListener('click', function() {
 	}).then(device => {
 		console.log('Got device:', device.name);
 		console.log('id:', device.id);
-		document.getElementById("demo").innerHTML = 'Got device:' + device.name + ',' + 'id:'+ device.id;
+		msg.innerHTML = 'Got device:' + device.name + ',' + 'id:'+ device.id;
 	});
 });
 </script>
