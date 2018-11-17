@@ -69,8 +69,9 @@ button.addEventListener('click', function() {
 		return characteristic.readValue();
 	})
 	.then(value => {
-		value = value.buffer ? value : new DataView(value);
-		console.log('tx value:', value.getUint8(0));
+		//value = value.buffer ? value : new DataView(value);
+		//console.log('tx value:', value.getUint8(0));
+		console.log('Reading Value ok');
 	})
 	.catch(exception => {
 		console.log(exception);
