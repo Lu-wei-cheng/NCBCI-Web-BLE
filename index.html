@@ -66,16 +66,16 @@ button.addEventListener('click', function() {
 	})
 	.then(characteristic => {
 		console.log('Reading Value …');
-		log('> Characteristic UUID:  ' + characteristic.uuid);
-    log('> Broadcast:            ' + characteristic.properties.broadcast);
-    log('> Read:                 ' + characteristic.properties.read);
-    log('> Write w/o response:   ' + characteristic.properties.writeWithoutResponse);
-    log('> Write:                ' + characteristic.properties.write);
-    log('> Notify:               ' + characteristic.properties.notify);
-    log('> Indicate:             ' + characteristic.properties.indicate);
-    log('> Signed Write:         ' + characteristic.properties.authenticatedSignedWrites);
-    log('> Queued Write:         ' + characteristic.properties.reliableWrite);
-    log('> Writable Auxiliaries: ' + characteristic.properties.writableAuxiliaries);
+		console.log('> Characteristic UUID:  ' + characteristic.uuid);
+		console.log('> Broadcast:            ' + characteristic.properties.broadcast);
+    	console.log('> Read:                 ' + characteristic.properties.read);
+    	console.log('> Write w/o response:   ' + characteristic.properties.writeWithoutResponse);
+    	console.log('> Write:                ' + characteristic.properties.write);
+    	console.log('> Notify:               ' + characteristic.properties.notify);
+    	console.log('> Indicate:             ' + characteristic.properties.indicate);
+    	console.log('> Signed Write:         ' + characteristic.properties.authenticatedSignedWrites);
+    	console.log('> Queued Write:         ' + characteristic.properties.reliableWrite);
+    	console.log('> Writable Auxiliaries: ' + characteristic.properties.writableAuxiliaries);
 	})
 	.catch(exception => {
 		console.log(exception);
