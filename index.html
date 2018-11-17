@@ -66,12 +66,16 @@ button.addEventListener('click', function() {
 	})
 	.then(characteristic => {
 		console.log('Reading Value …');
-		return characteristic.readValue();
-	})
-	.then(value => {
-		//value = value.buffer ? value : new DataView(value);
-		//console.log('tx value:', value.getUint8(0));
-		console.log('Reading Value ok');
+		log('> Characteristic UUID:  ' + characteristic.uuid);
+    log('> Broadcast:            ' + characteristic.properties.broadcast);
+    log('> Read:                 ' + characteristic.properties.read);
+    log('> Write w/o response:   ' + characteristic.properties.writeWithoutResponse);
+    log('> Write:                ' + characteristic.properties.write);
+    log('> Notify:               ' + characteristic.properties.notify);
+    log('> Indicate:             ' + characteristic.properties.indicate);
+    log('> Signed Write:         ' + characteristic.properties.authenticatedSignedWrites);
+    log('> Queued Write:         ' + characteristic.properties.reliableWrite);
+    log('> Writable Auxiliaries: ' + characteristic.properties.writableAuxiliaries);
 	})
 	.catch(exception => {
 		console.log(exception);
