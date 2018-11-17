@@ -12,6 +12,7 @@
 </style>
 <body>
 <button id="the-button">Try it</button>
+<div id="msg">msg</div>
 <script>
 // 6e400003-b5a3-f393-e0a9-e50e24dcca9e
 // Step 1: Scan for a device with 0xffe5 service
@@ -39,14 +40,17 @@
      <!-- // And of course: error handling! -->
      <!-- console.error('Connection failed!', error); -->
   <!-- }); -->
-  
+
 const button = document.querySelector('#the-button');
+const msg = document.querySelector('#msg');
+
 button.addEventListener('click', function() {
 	navigator.bluetooth.requestDevice({
 		acceptAllDevices: true
 	}).then(device => {
 		console.log('Got device:', device.name);
 		console.log('id:', device.id);
+		document.getElementById("demo").innerHTML = 'Got device:' + device.name + ',' + 'id:'+ device.id;
 	});
 });
 </script>
