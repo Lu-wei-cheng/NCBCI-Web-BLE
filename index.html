@@ -46,7 +46,8 @@ const msg = document.getElementById('msg');
 
 button.addEventListener('click', function() {
 	navigator.bluetooth.requestDevice({
-		acceptAllDevices: true
+		acceptAllDevices: true,
+		optionalServices: ['6e400001-b5a3-f393-e0a9-e50e24dcca9e']
 	}).then(device => {
 		console.log('Got device:', device.name);
 		console.log('id:', device.id);
@@ -58,7 +59,6 @@ button.addEventListener('click', function() {
 	.then(server => {
 		console.log('Getting Service…');
 		return server.getPrimaryService('6e400001-b5a3-f393-e0a9-e50e24dcca9e');
-		console.log('Getting Service ok');
 	})
 	.then(service => {
 		console.log('Getting Characteristic…');
