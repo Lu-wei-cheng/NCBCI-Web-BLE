@@ -11,7 +11,8 @@
 
 </style>
 <body>
-<button id="the-button">Try it</button>
+<button id="start-button">start</button>
+<button id="stop-button">stop</button>
 <div id="msg">msg</div>
 <script>
 // 6e400003-b5a3-f393-e0a9-e50e24dcca9e
@@ -41,10 +42,13 @@
      <!-- console.error('Connection failed!', error); -->
   <!-- }); -->
 
-const button = document.querySelector('#the-button');
+const startbutton = document.querySelector('#start-button');
+const stopbutton = document.querySelector('#stop-button');
 const msg = document.getElementById('msg');
 
-button.addEventListener('click', function() {
+var myCharacteristic;
+
+startbutton.addEventListener('click', function() {
 	navigator.bluetooth.requestDevice({
 		acceptAllDevices: true,
 		optionalServices: ['6e400001-b5a3-f393-e0a9-e50e24dcca9e','6e400003-b5a3-f393-e0a9-e50e24dcca9e']
@@ -70,11 +74,15 @@ button.addEventListener('click', function() {
       console.log('> Notifications started');
       myCharacteristic.addEventListener('characteristicvaluechanged',
           handleNotifications);
-    });
-  })
+      });
+    })
 	.catch(exception => {
 		console.log(exception);
 	});
+});
+
+stopbutton.addEventListener('click', function() {
+    onStopButtonClick();
 });
 
 function handleNotifications(event) {
@@ -87,6 +95,22 @@ function handleNotifications(event) {
     a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
   }
   console.log('> ' + a.join(' '));
+  
+
+}
+
+function onStopButtonClick() {
+  if (myCharacteristic) {
+    myCharacteristic.stopNotifications()
+    .then(_ => {
+      log('> Notifications stopped');
+      myCharacteristic.removeEventListener('characteristicvaluechanged',
+          handleNotifications);
+    })
+    .catch(error => {
+      console.log('Argh! ' + error);
+    });
+  }
 }
 </script>
 
