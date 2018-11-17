@@ -43,9 +43,7 @@
 const button = document.querySelector('#the-button');
 button.addEventListener('click', function() {
 	navigator.bluetooth.requestDevice({
-		filters: [{
-			services: ['6e400003-b5a3-f393-e0a9-e50e24dcca9e']
-		}]
+		acceptAllDevices: true
 	}).then(device => {
 		console.log('Got device:', device.name);
 		console.log('id:', device.id);
