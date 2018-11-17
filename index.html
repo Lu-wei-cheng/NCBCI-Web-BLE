@@ -76,6 +76,12 @@ button.addEventListener('click', function() {
     	console.log('> Signed Write:         ' + characteristic.properties.authenticatedSignedWrites);
     	console.log('> Queued Write:         ' + characteristic.properties.reliableWrite);
     	console.log('> Writable Auxiliaries: ' + characteristic.properties.writableAuxiliaries);
+		
+		myCharacteristic = characteristic;
+    return myCharacteristic.startNotifications().then(_ => {
+      log('> Notifications started');
+      myCharacteristic.addEventListener('characteristicvaluechanged',
+          handleNotifications);
 	})
 	.catch(exception => {
 		console.log(exception);
