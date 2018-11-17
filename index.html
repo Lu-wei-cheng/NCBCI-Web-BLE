@@ -51,7 +51,28 @@ button.addEventListener('click', function() {
 		console.log('Got device:', device.name);
 		console.log('id:', device.id);
 		msg.innerHTML = 'Got device:' + device.name + ',' + 'id:'+ device.id;
-	});
+	// Chromium 49 及以下版本请使用 connectGATT()
+    // Chromium 50 之后版本请使用 gatt.connect()
+	return device.gatt.connect();
+})
+.then(server => {
+	console.log('Getting Service…');
+	return server.getPrimaryService('6e400001-b5a3-f393-e0a9-e50e24dcca9e');
+})
+.then(service => {
+	console.log('Getting Characteristic…');
+	return service.getCharacteristic('6e400003-b5a3-f393-e0a9-e50e24dcca9e');
+})
+.then(characteristic => {
+	console.log('Reading Value …');
+	return characteristic.readValue();
+})
+.then(value => {
+	value = value.buffer ? value : new DataView(value);
+	console.log('tx value:', value.getUint8(0));
+})
+.catch(exception => {
+	console.log(exception);
 });
 </script>
 
