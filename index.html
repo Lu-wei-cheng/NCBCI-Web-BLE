@@ -13,7 +13,7 @@
 <body>
 <button id="the-button">Try it</button>
 <script>
-// 6e400003-b5a3-f393-e0a9-e50e24dcca9eㄥ
+// 6e400003-b5a3-f393-e0a9-e50e24dcca9e
 // Step 1: Scan for a device with 0xffe5 service
 <!-- navigator.bluetooth.requestDevice({ -->
   <!-- filters: [{ services: [0xffe5] }] -->
@@ -44,7 +44,7 @@ const button = document.querySelector('#the-button');
 button.addEventListener('click', function() {
 	navigator.bluetooth.requestDevice({
 		filters: [{
-			services: ['battery_service']
+			services: ['6e400003-b5a3-f393-e0a9-e50e24dcca9e']
 		}]
 	}).then(device => {
 		console.log('Got device:', device.name);
