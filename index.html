@@ -65,25 +65,13 @@ button.addEventListener('click', function() {
 		return service.getCharacteristic('6e400003-b5a3-f393-e0a9-e50e24dcca9e');
 	})
 	.then(characteristic => {
-		console.log('Reading Value …');
-		console.log('> Characteristic UUID:  ' + characteristic.uuid);
-		console.log('> Broadcast:            ' + characteristic.properties.broadcast);
-    	console.log('> Read:                 ' + characteristic.properties.read);
-    	console.log('> Write w/o response:   ' + characteristic.properties.writeWithoutResponse);
-    	console.log('> Write:                ' + characteristic.properties.write);
-    	console.log('> Notify:               ' + characteristic.properties.notify);
-    	console.log('> Indicate:             ' + characteristic.properties.indicate);
-    	console.log('> Signed Write:         ' + characteristic.properties.authenticatedSignedWrites);
-    	console.log('> Queued Write:         ' + characteristic.properties.reliableWrite);
-    	console.log('> Writable Auxiliaries: ' + characteristic.properties.writableAuxiliaries);
-		
-		myCharacteristic = characteristic;
-		return myCharacteristic.startNotifications().then(_ => {
-		log('> Notifications started');
-		myCharacteristic.addEventListener('characteristicvaluechanged',
-         handleNotifications);
-		 });
-	})
+    myCharacteristic = characteristic;
+    return myCharacteristic.startNotifications().then(_ => {
+      log('> Notifications started');
+      myCharacteristic.addEventListener('characteristicvaluechanged',
+          handleNotifications);
+    });
+  })
 	.catch(exception => {
 		console.log(exception);
 	});
