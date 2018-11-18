@@ -106,8 +106,9 @@ function handleNotifications(event) {
   <!-- for (let i = 0 ; i < value.byteLength; i++){ -->
   <!-- console.log(value.getUint8(i).toString()); -->
   <!-- } -->
+  let decoder = new TextDecoder('utf-8');
   
-  console.log(value);
+  console.log(decoder.decode(value));
 
 }
 
