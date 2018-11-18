@@ -113,6 +113,7 @@ stopbutton.addEventListener('click', function() {
 function handleNotifications(event) {
   let value = event.target.value;
   let decoder = new TextDecoder('utf-8');
+  var value_int;
   
   console.log(decoder.decode(value));
   
