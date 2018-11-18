@@ -78,8 +78,7 @@ startbutton.addEventListener('click', function() {
 		console.log('Got device:', device.name);
 		console.log('id:', device.id);
 		msg.innerHTML = 'Got device:' + device.name + ',' + 'id:'+ device.id;
-	// Chromium 49 及以下版本请使用 connectGATT()
-    // Chromium 50 之后版本请使用 gatt.connect()
+
 	return device.gatt.connect();
 	})
 	.then(server => {
