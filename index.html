@@ -115,7 +115,7 @@ function handleNotifications(event) {
   console.log(decoder.decode(value));
   
   value_int = parseInt(value);
-  value_int = 5000 + 1000;
+  value_int = value_int + Math.random() * 1000;
   
   data.push(value_int);
 
