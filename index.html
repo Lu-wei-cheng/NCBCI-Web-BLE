@@ -102,8 +102,10 @@ function handleNotifications(event) {
   
   //console.log('getFloat32:' + value.getFloat32());
   //console.log(value.getFloat32());
-  console.log(value);
   
+  for (let i = 0 ; i < value.byteLength; i++){
+  console.log(value.getUint8(i).toString(16).slice(-2));
+  }
   
 
 }
